@@ -1,4 +1,4 @@
-package main.java.com.markmcerlean.primechecker.models;
+package com.markmcerlean.primechecker.models;
 
 public interface Model {
 }

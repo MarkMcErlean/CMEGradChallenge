@@ -1,16 +1,19 @@
-package main.java.com.markmcerlean.primechecker.controllers;
+package com.markmcerlean.primechecker.controllers;
 
-import main.java.com.markmcerlean.primechecker.exception.handler.PrimeCheckerExceptionHandler;
-import main.java.com.markmcerlean.primechecker.models.PrimeCheckerModel;
-import main.java.com.markmcerlean.primechecker.services.PrimeCheckerService;
+import com.markmcerlean.primechecker.exception.handler.PrimeCheckerExceptionHandler;
+import com.markmcerlean.primechecker.models.PrimeCheckerModel;
+import com.markmcerlean.primechecker.services.PrimeCheckerService;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
 public class PrimeCheckerController {
     private final PrimeCheckerService primeCheckerService;
     private final PrimeCheckerExceptionHandler primeCheckerExceptionHandler;
+//    private final Logger logger = LogManager.getLogger(PrimeCheckerController.class);
 
     public PrimeCheckerController(PrimeCheckerService primeCheckerService, PrimeCheckerExceptionHandler primeCheckerExceptionHandler){
         this.primeCheckerService = primeCheckerService;

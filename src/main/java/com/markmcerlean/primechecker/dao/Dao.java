@@ -1,7 +1,7 @@
-package main.java.com.markmcerlean.primechecker.dao;
+package com.markmcerlean.primechecker.dao;
 
-import main.java.com.markmcerlean.primechecker.exception.FatalException;
-import main.java.com.markmcerlean.primechecker.models.Model;
+import com.markmcerlean.primechecker.exception.FatalException;
+import com.markmcerlean.primechecker.models.Model;
 
 import java.util.List;
 

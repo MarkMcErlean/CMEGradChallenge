@@ -1,6 +1,6 @@
-package main.java.com.markmcerlean.primechecker.validation;
+package com.markmcerlean.primechecker.validation;
 
-import main.java.com.markmcerlean.primechecker.models.Model;
+import com.markmcerlean.primechecker.models.Model;
 
 public interface Validator <T extends Model>{
     boolean validate(T input);

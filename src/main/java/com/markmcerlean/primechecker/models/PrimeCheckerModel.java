@@ -1,4 +1,4 @@
-package main.java.com.markmcerlean.primechecker.models;
+package com.markmcerlean.primechecker.models;
 
 public class PrimeCheckerModel implements Model{
     private String userName;
@@ -23,18 +23,6 @@ public class PrimeCheckerModel implements Model{
     public void setValueToCheck(String valueToCheck) {
         this.valueToCheck = valueToCheck;
     }
-
-//    public boolean hasPrimeNumbersInSequence() {
-//        return hasPrimeNumbersInSequence;
-//    }
-
-//    public void setHasPrimeNumbersInSequence(boolean hasPrimeNumbersInSequence) {
-//        this.hasPrimeNumbersInSequence = hasPrimeNumbersInSequence;
-//    }
-
-//    public boolean isHasPrimeNumbersInSequence() {
-//        return hasPrimeNumbersInSequence;
-//    }
 
     public String getPrimeNumbersInSequence() {
         return primeNumbersInSequence;

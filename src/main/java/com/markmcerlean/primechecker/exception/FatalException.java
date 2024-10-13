@@ -1,4 +1,4 @@
-package main.java.com.markmcerlean.primechecker.exception;
+package com.markmcerlean.primechecker.exception;
 
 public class FatalException extends Exception{
     private static final long serialVersionUID = 0;
