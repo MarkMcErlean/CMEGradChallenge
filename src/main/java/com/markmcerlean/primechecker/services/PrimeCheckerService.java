@@ -5,10 +5,7 @@ import main.java.com.markmcerlean.primechecker.exception.FatalException;
 import main.java.com.markmcerlean.primechecker.models.PrimeCheckerModel;
 import main.java.com.markmcerlean.primechecker.validation.Validator;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class PrimeCheckerService {
     private Map<String, PrimeCheckerModel> cache = new HashMap<>();
@@ -19,12 +16,17 @@ public class PrimeCheckerService {
         this.validator = validator;
         this.dao = dao;
         setupCache(this.cache, this.dao);
+        System.out.println(this.cache);
+        System.out.println(this.dao.readAll());
     }
 
-    public PrimeCheckerModel processRequest(String userName, String valueToCheck){
+    public PrimeCheckerModel processRequest(String userName, String valueToCheck) throws FatalException {
         //log info here
         if (cache.containsKey(valueToCheck)){
             System.out.println("Input [" + valueToCheck + "] found in cache");
+
+            PrimeCheckerModel cachedResult = cache.get(valueToCheck);
+            System.out.println(cachedResult);
             return cache.get(valueToCheck);
         }
 
@@ -35,12 +37,13 @@ public class PrimeCheckerService {
 
         if (primeCheckerModel.isValid()){
             List<String> combinations = generateCombinations(valueToCheck);
-            List<String> primeNumbersInSequence = getPrimeNumbersInSequence(combinations);
-
+            List<Integer> primeNumbersInSequence = getPrimeNumbersInSequence(combinations);
+            Collections.sort(primeNumbersInSequence);
+            primeCheckerModel.setPrimeNumbersInSequence(primeNumbersInSequence.toString());
             System.out.println(primeNumbersInSequence);
         }
-        // addToCache(primeCheckerResponseModel)
-        //writeToPersistence(primeCheckerResponseModel);
+        addToCache(primeCheckerModel);
+        writeToPersistence(primeCheckerModel);
         return primeCheckerModel;
     }
 
@@ -50,7 +53,6 @@ public class PrimeCheckerService {
 
     protected List<String> generateCombinations(String valueToCheck) {
         List<String> combinations = new ArrayList<>();
-
         for (int i = 0; i < valueToCheck.length(); i++) {
             for (int j = i + 1; j <= valueToCheck.length(); j++) {
                 combinations.add(valueToCheck.substring(i, j));
@@ -59,16 +61,14 @@ public class PrimeCheckerService {
         return combinations;
     }
 
-    protected List<String> getPrimeNumbersInSequence(List<String> combinations){
-        List<String> primeNumbersInSequence = new ArrayList<>();
-
+    protected List<Integer> getPrimeNumbersInSequence(List<String> combinations){
+        List<Integer> primeNumbersInSequence = new ArrayList<>();
         for (String combination : combinations) {
             int number = Integer.parseInt(combination);
             if (isPrime(number)){
-                primeNumbersInSequence.add(Integer.toString(number));
+                primeNumbersInSequence.add(number);
             }
         }
-
         return primeNumbersInSequence;
     }
 
@@ -89,9 +89,12 @@ public class PrimeCheckerService {
 
     protected void addToCache(PrimeCheckerModel responseModel){
         cache.put(responseModel.getValueToCheck(), responseModel);
+        System.out.println("value to check is: " + responseModel.getValueToCheck());
+        System.out.println("response model:" + responseModel);
     }
 
     protected void setupCache(Map<String, PrimeCheckerModel> cache, Dao<PrimeCheckerModel> dao) throws FatalException {
+        System.out.println("Populating Cache");
         dao.readAll().forEach(m -> {cache.put(m.getValueToCheck(), m);});
     }
 }

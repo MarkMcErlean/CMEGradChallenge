@@ -3,7 +3,7 @@ package main.java.com.markmcerlean.primechecker.models;
 public class PrimeCheckerModel implements Model{
     private String userName;
     private String valueToCheck;
-    private boolean hasPrimeNumbersInSequence;
+//    private boolean hasPrimeNumbersInSequence;
     private String primeNumbersInSequence;
     private boolean isValid;
     private String message;
@@ -24,17 +24,17 @@ public class PrimeCheckerModel implements Model{
         this.valueToCheck = valueToCheck;
     }
 
-    public boolean hasPrimeNumbersInSequence() {
-        return hasPrimeNumbersInSequence;
-    }
+//    public boolean hasPrimeNumbersInSequence() {
+//        return hasPrimeNumbersInSequence;
+//    }
 
-    public void setHasPrimeNumbersInSequence(boolean hasPrimeNumbersInSequence) {
-        this.hasPrimeNumbersInSequence = hasPrimeNumbersInSequence;
-    }
+//    public void setHasPrimeNumbersInSequence(boolean hasPrimeNumbersInSequence) {
+//        this.hasPrimeNumbersInSequence = hasPrimeNumbersInSequence;
+//    }
 
-    public boolean isHasPrimeNumbersInSequence() {
-        return hasPrimeNumbersInSequence;
-    }
+//    public boolean isHasPrimeNumbersInSequence() {
+//        return hasPrimeNumbersInSequence;
+//    }
 
     public String getPrimeNumbersInSequence() {
         return primeNumbersInSequence;
@@ -58,5 +58,10 @@ public class PrimeCheckerModel implements Model{
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    @Override
+    public String toString(){
+        return primeNumbersInSequence ;
     }
 }

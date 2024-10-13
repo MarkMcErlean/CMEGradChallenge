@@ -17,10 +17,8 @@ public class PrimeCheckerController {
         this.primeCheckerExceptionHandler = primeCheckerExceptionHandler;
     }
 
-    public PrimeCheckerModel processPrimeCheckerRequest() throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String username = reader.readLine();
-        String valueToCheck = reader.readLine();
+    public PrimeCheckerModel processPrimeCheckerRequest(String username, String valueToCheck) throws IOException {
+
         try{
             return primeCheckerService.processRequest(username, valueToCheck);
         } catch (Exception e) { // change to FatalException later

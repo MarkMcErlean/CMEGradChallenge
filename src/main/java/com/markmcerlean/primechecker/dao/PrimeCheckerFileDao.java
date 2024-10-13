@@ -26,7 +26,8 @@ public class PrimeCheckerFileDao implements Dao<PrimeCheckerModel> {
         StringBuilder sb = new StringBuilder();
         sb.append(input.getUserName()).append(",");
         sb.append(input.getValueToCheck()).append(",");
-        sb.append(input.hasPrimeNumbersInSequence()).append(",");
+//        sb.append(input.hasPrimeNumbersInSequence()).append(",");
+        sb.append(input.getPrimeNumbersInSequence()).append(",");
         sb.append(input.isValid()).append(",");
         sb.append(input.getMessage()).append(System.getProperty("line.separator"));
         //log ("persisting xyz to file filename)
@@ -42,9 +43,9 @@ public class PrimeCheckerFileDao implements Dao<PrimeCheckerModel> {
         String[] values = input.split(",");
         primeCheckerModel.setUserName(values[0]);
         primeCheckerModel.setValueToCheck(values[1]);
-        primeCheckerModel.setHasPrimeNumbersInSequence(Boolean.parseBoolean(values[2]));
-        primeCheckerModel.setValid(Boolean.parseBoolean(values[3]));
-        primeCheckerModel.setMessage(values[4]);
+//        primeCheckerModel.setHasPrimeNumbersInSequence(Boolean.parseBoolean(values[2]));
+        primeCheckerModel.setValid(Boolean.parseBoolean(values[2]));
+        primeCheckerModel.setMessage(values[3]);
 
         return primeCheckerModel;
     }
