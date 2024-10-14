@@ -23,7 +23,7 @@ public class PrimeCheckerExceptionHandler {
         logger.info("Exception encountered: [{}]. Root exception: [{}]", e.getMessage(), findRootException(e));
     }
 
-    private String findRootException(Throwable t){
+    protected String findRootException(Throwable t){
         Throwable cause = null;
         Throwable result = t;
 

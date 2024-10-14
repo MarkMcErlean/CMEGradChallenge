@@ -26,24 +26,26 @@ public class PrimeCheckerService {
         if (cache.containsKey(valueToCheck)){
             logger.info("Input [{}] found in cache", valueToCheck);
             PrimeCheckerModel cachedResult = cache.get(valueToCheck);
-//            System.out.println(cachedResult.getPrimeNumbersInSequence());
-            System.out.println(cachedResult.getPrimeNumbersInSequence());
+            System.out.println(cachedResult);
             return cachedResult;
         }
 
         logger.info("Input [{}] not found in cache", valueToCheck);
         PrimeCheckerModel primeCheckerModel = parseToResponseModel(userName, valueToCheck);
-        logger.info("Checking validation of [{}]", primeCheckerModel);
+        logger.info("Checking validation of [{}]", primeCheckerModel.getValueToCheck());
 
         primeCheckerModel.setValid(validator.validate(primeCheckerModel));
 
         if (primeCheckerModel.isValid()){
-            logger.info("[{}] is valid", primeCheckerModel);
+            logger.info("[{}] is valid", primeCheckerModel.getValueToCheck());
             List<String> combinations = generateCombinations(valueToCheck);
-            Set<Integer> primeNumbersInSequence = getPrimeNumbersInSequence(combinations);
-            primeCheckerModel.setPrimeNumbersInSequence(primeNumbersInSequence.toString().replace(",", ""));
+            Set<Integer> primeNumbersInSequence = getPrimeNumbers(combinations);
+            List<Integer> sortedList = new ArrayList<>(primeNumbersInSequence);
+            Collections.sort(sortedList);
+            primeCheckerModel.setPrimeNumbersInSequence(sortedList.toString().replace(",", ""));
 
-            System.out.println(primeNumbersInSequence);
+//            System.out.println(primeNumbersInSequence);
+            System.out.println(primeCheckerModel.getPrimeNumbersInSequence());
         }
         else {
             logger.info("[{}] is not valid", primeCheckerModel);
@@ -69,7 +71,7 @@ public class PrimeCheckerService {
         return combinations;
     }
 
-    protected Set<Integer> getPrimeNumbersInSequence(List<String> combinations){
+    protected Set<Integer> getPrimeNumbers(List<String> combinations){
         Set<Integer> primeNumbersInSequence = new HashSet<>();
         for (String combination : combinations) {
             int number = Integer.parseInt(combination);
@@ -94,11 +96,13 @@ public class PrimeCheckerService {
         logger.info("username set to [{}]", userName);
         primeCheckerModel.setValueToCheck(valueToCheck);
         logger.info("ValueToCheck set to [{}]", valueToCheck);
-        logger.info("new responseModel is [{}]", primeCheckerModel);
         return primeCheckerModel;
     }
 
     protected void addToCache(PrimeCheckerModel responseModel){
+        if (responseModel == null){
+            logger.error("Cannot add null model to cache - model [{}]", responseModel);
+        }
         cache.put(responseModel.getValueToCheck(), responseModel);
     }
 

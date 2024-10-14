@@ -1,1 +1,2 @@
-mark,1234w,null,false,Value to Check contains non numeric characters
+Mark,12345,[2 3 5 23],true,null
+Mark,13579,[3 5 7 13 79],true,null

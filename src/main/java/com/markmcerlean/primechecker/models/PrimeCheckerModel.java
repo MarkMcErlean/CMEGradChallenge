@@ -50,6 +50,6 @@ public class PrimeCheckerModel implements Model{
 
     @Override
     public String toString(){
-        return primeNumbersInSequence ;
+        return "The Prime numbers in this sequence are: " + primeNumbersInSequence.replace(" ", ", ") ;
     }
 }
