@@ -44,13 +44,6 @@ public class PrimeCheckerFileDao implements Dao<PrimeCheckerModel> {
         }
     }
 
-    private String escapeCSVField(String field){
-        if (field.contains(",")){
-            field = "\"" + field + "\"";
-        }
-        return field;
-    }
-
     public PrimeCheckerModel parseLineToModel(String input){
         PrimeCheckerModel primeCheckerModel = new PrimeCheckerModel();
         String[] values = input.split(",");

@@ -1,4 +1,4 @@
-package main.java.com.markmcerlean.primechecker;
+package com.markmcerlean.primechecker;
 
 import com.markmcerlean.primechecker.controllers.PrimeCheckerController;
 import com.markmcerlean.primechecker.dao.Dao;
