@@ -3,6 +3,7 @@ Technical Challenge for CME Grad Recruitment process
 
 Assumptions made
  - I have made the assumption that the output of the program should have the format "The Prime numbers in this sequence are: [2, 3, 5, 23]"
+ - I have assumed the the Username does not need to be validated (though I have included validation code for this to show that the validation can be easily expanded)
  - I Have my logger configured to print to the command line instead of a log file
  - I have included tests, though I did not know how to test the PrimeCheckerService class on time - This is something I would like to revisit
 
