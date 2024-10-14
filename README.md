@@ -8,4 +8,9 @@ Assumptions made
 
 How to run
  - The application is using Java 17 with maven
+ - Dependencies installed are
+    - Log4j-api
+    - Log4j-core
+    - junit
+    - mockito-core (though this was not used by the time of submission)
 
